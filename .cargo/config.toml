@@ -1,2 +1,13 @@
 [alias]
 testit = "test --workspace --test tests --"
+
+[build]
+target = "x86_64-alpine-linux-musl"
+
+[target.x86_64-alpine-linux-musl]
+linker = "clang"
+rustflags = ["-C", "target-feature=+crt-static", "-C", "link-arg=-static"]
+
+[env]
+OPENSSL_STATIC = "1"
+OPENSSL_DIR = "/usr"
