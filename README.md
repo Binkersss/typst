@@ -1,3 +1,23 @@
+## Static Build Fork
+
+This is a fork of [Typst](https://github.com/typst/typst) maintained for static-only builds. It tracks upstream `0.x.0` releases and produces a fully static, musl-linked binary suitable for use as a binary-only package.
+
+Currently only supporting Alpine Linux due to not wanting to wrestle with apk (expect general `x86_64-unknown-linux-musl` support imminently).
+
+### Building
+
+Requires a musl host with `cargo`, `clang`, and `openssl-dev`/`openssl-libs-static` available.
+
+```sh
+cargo build --release --locked
+```
+
+The binary will be at `target/x86_64-alpine-linux-musl/release/typst`.
+
+Build configuration is handled by `.cargo/config.toml` — no extra environment variables or flags are needed.
+
+---
+
 <h1 align="center">
   <img alt="Typst" src="https://user-images.githubusercontent.com/17899797/226108480-722b770e-6313-40d7-84f2-26bebb55a281.png">
 </h1>
@@ -173,10 +193,10 @@ typst help
 typst help watch
 ```
 
-If you prefer an integrated IDE-like experience with autocompletion and instant 
-preview, you can also check out our [free web app][app]. Alternatively, there is 
-a community-created language server called 
-[Tinymist](https://myriad-dreamin.github.io/tinymist/) which is integrated into 
+If you prefer an integrated IDE-like experience with autocompletion and instant
+preview, you can also check out our [free web app][app]. Alternatively, there is
+a community-created language server called
+[Tinymist](https://myriad-dreamin.github.io/tinymist/) which is integrated into
 various editor extensions.
 
 ## Community
